@@ -26,4 +26,7 @@ public class WarehouseService {
         else
             System.out.println("Error - Something is wrong");
     }
+    public int calWeight(String type) throws SQLException {
+        return warehouseRepository.calWeight(type);
+    }
 }
