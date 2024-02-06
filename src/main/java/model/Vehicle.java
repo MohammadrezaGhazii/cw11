@@ -13,4 +13,9 @@ public class Vehicle {
     int id ;
     String type ;
     int weight ;
+
+    public Vehicle(String type, int weight) {
+        this.type = type;
+        this.weight = weight;
+    }
 }
