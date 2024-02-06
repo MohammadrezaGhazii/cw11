@@ -22,4 +22,13 @@ public class WarehouseRepository {
         }
         return result ;
     }
+
+    public void delete (int id) throws SQLException {
+        String sql = "DELETE FROM warehouse WHERE id = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)){
+            ps.setInt(1,id);
+
+            ps.executeUpdate();
+        }
+    }
 }
