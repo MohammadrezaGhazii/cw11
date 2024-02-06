@@ -4,6 +4,7 @@ import model.Warehouse;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class WarehouseRepository {
@@ -30,5 +31,19 @@ public class WarehouseRepository {
 
             ps.executeUpdate();
         }
+    }
+    public int calWeight(String type) throws SQLException {
+        int weight = 0 ;
+        String sql = "SELECT sum(V.weight) FROM warehouse W JOIN vehicle V\n" +
+                "ON W.vehicle_id = V.id\n" +
+                "WHERE V.type = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)){
+            ps.setString(1 , type);
+            ResultSet resultSet = ps.executeQuery();
+            if (resultSet.next()){
+                weight = resultSet.getInt(1);
+            }
+        }
+        return weight;
     }
 }
