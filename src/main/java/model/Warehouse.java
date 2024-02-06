@@ -12,4 +12,8 @@ import lombok.experimental.FieldDefaults;
 public class Warehouse {
     int id ;
     int vehicleId ;
+
+    public Warehouse(int vehicleId) {
+        this.vehicleId = vehicleId;
+    }
 }
